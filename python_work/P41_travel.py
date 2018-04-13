@@ -1,0 +1,12 @@
+travels=['a','f','p','d','s']
+print(travels)
+print(sorted(travels))
+print(sorted(travels,reverse=True))
+print(travels)
+travels.reverse()
+print(travels)
+travels.sort()
+print(travels)
+travels.sort(reverse=True)
+print(travels)
+print("\n\tThere are "+str(len(travels))+" places.")

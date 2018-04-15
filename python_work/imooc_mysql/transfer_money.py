@@ -8,7 +8,7 @@ class TransferMoney(object):
 
     #验证账号是否存在
     def check_acct_availablez(self,acctid):
-        cursor = self.conn.cursor()
+        cursor = self.conn.cursor()#获取会话指针
         try:
             sql = "select * from account where acctid=%s"%acctid
             #执行sql语句

@@ -8,18 +8,21 @@ Created on 2018Äê4ÔÂ3ÈÕ
 from bs4 import BeautifulSoup
 import re
 from urllib.parse import urljoin
+import urllib.request
 
 class HtmlParser(object):
     
     def get_new_urls(self,page_url,soup):
         new_urls = set()
         #/view/123.htm
-        links = soup.find_all('a',href=re.compile(r"/view/\d+\.htm"))
+        #links = soup.find_all('a', href=re.compile(r"/view/\d+\.htm"))
+        links = soup.find_all('a')
         for link in links:
-            new_url = link['href']
-            new_full_url = urljoin(page_url,new_url)
-            print(new_full_url)
-            new_urls.add(new_full_url)
+            if re.search(r'/item/', str(link)):
+                new_url = link['href']
+                new_full_url = urljoin(page_url,new_url)
+                # print(new_full_url)
+                new_urls.add(new_full_url)
         print(new_urls)
         return new_urls
         
@@ -32,7 +35,7 @@ class HtmlParser(object):
         
         #<dd class="lemmaWgt-lemmaTitle-title">
         #<h1>Python</h1>
-        title_node = soup.find("dd",class_="lemmaWgt-lemmaTitle-title".find("h2"))
+        title_node = soup.find("div", class_="lemmaWgt-lemmaTitle-title".find("h2"))
         if title_node is None:
             print("title_node is None")
             return
@@ -52,10 +55,16 @@ class HtmlParser(object):
             print("page_url is None or html_cont is not None")
             return
          
-        soup = BeautifulSoup(html_cont,'html.parser',from_encoding='gbk')
+        soup = BeautifulSoup(html_cont,'html.parser')
         new_urls = self.get_new_urls(page_url,soup)
         new_data = self.get_new_data(page_url,soup)
         return new_urls,new_data
-        
-    
-    
+
+
+if __name__ == "__main__":
+    new_url = 'https://baike.baidu.com/item/Python/407313?fr=aladdin'
+    response = urllib.request.urlopen('https://baike.baidu.com/item/Python/407313?fr=aladdin')
+    html_cont = response.read().decode('utf-8')
+    print("download is ok")
+    parser = HtmlParser()
+    new_urls, new_data = parser.parse(new_url, html_cont)

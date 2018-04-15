@@ -16,7 +16,6 @@ class HtmlDownloader(object):
         
         if response.getcode() != 200:
             return None
-        print("download is ok")
         return response.read()
         
     

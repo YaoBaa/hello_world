@@ -40,11 +40,12 @@ class SpiderMain(object):
                 
                 #将解析得到的url添加到url管理器
                 self.urls.add_new_urls(new_urls)
+                print('1111111111')
+                #保存数据到数据库
+                self.outputer.collect_data(new_url, new_data)
+                print('124314111')
                 
-                #收集数据
-                self.outputer.collect_data(new_data)
-                
-                if count == 10:
+                if count == 2:
                     break
                 
                 count += 1
@@ -52,7 +53,7 @@ class SpiderMain(object):
                 print("craw failed")
             
         #输出收集好的数据
-        self.outputer.output_html()
+        # self.outputer.output_html()
             
         
 

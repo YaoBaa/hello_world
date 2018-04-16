@@ -28,21 +28,23 @@ class HtmlParser(object):
         
     def get_new_data(self,page_url,soup):
         res_data = {}
-        
-        
+
         #url
         res_data['url'] = page_url
         
         #<dd class="lemmaWgt-lemmaTitle-title">
         #<h1>Python</h1>
-        title_node = soup.find("div", class_="lemmaWgt-lemmaTitle-title".find("h2"))
-        if title_node is None:
-            print("title_node is None")
-            return
-        res_data['title'] = title_node.get_text()
+        # title_node = soup.find("div", class_="lemmaWgt-lemmaTitle lemmaWgt-lemmaTitle-")
+        # if title_node is None:
+        #     print("title_node is None")
+        #     return
+        # res_data['title'] = title_node.get_text()
         
         #<div class="lemma-summary" label-module="lemmaSummary">
         summery_node = soup.find("div",class_="lemma-summary")
+        if summery_node is None:
+            print("summery_node is None")
+            return
         res_data['summery'] = summery_node.get_text()
         print(res_data)
         

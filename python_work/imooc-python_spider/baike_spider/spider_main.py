@@ -40,12 +40,10 @@ class SpiderMain(object):
                 
                 #将解析得到的url添加到url管理器
                 self.urls.add_new_urls(new_urls)
-                print('1111111111')
                 #保存数据到数据库
                 self.outputer.collect_data(new_url, new_data)
-                print('124314111')
                 
-                if count == 2:
+                if count == 2000:
                     break
                 
                 count += 1

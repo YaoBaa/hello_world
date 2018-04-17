@@ -8,7 +8,7 @@ import re
 
 #请求URL，创建对象，使用utf-8编码
 main_url = 'https://baike.baidu.com'
-resp = request.urlopen('https://baike.baidu.com/item/Python/407313?fr=aladdin').read().decode('utf-8')
+resp = request.urlopen('https://baike.baidu.com/item/Python').read().decode('utf-8')
 
 #指定解析器
 soup = BeautifulSoup(resp, 'html.parser')

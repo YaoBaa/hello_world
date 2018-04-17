@@ -46,6 +46,13 @@ class HtmlParser(object):
             print("summery_node is None")
             return
         res_data['summery'] = summery_node.get_text()
+
+        # data = ''
+        # infos = soup.find_all('div', class_='para')
+        # for info in infos:
+        #     data += info.get_text()
+        # print(data)
+
         print(res_data)
         
         return res_data

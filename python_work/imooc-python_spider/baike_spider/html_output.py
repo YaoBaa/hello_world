@@ -17,7 +17,6 @@ class HtmlOutputer(object):
         if data is None:
             print('data is none')
             return
-        print('2222222222222222222')
         conn = pymysql.Connect(
             host='127.0.0.1',
             port=3306,

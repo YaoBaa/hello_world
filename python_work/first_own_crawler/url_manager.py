@@ -101,8 +101,7 @@ class UrlManager():
         cursor.execute(sql)
         urls = cursor.fetchone()
         for url in urls:
-            print("craw:%s"%url)
-
+            url
         cursor.close()
         conn.close()
         return url

@@ -18,6 +18,8 @@ class Crawler():
                 #首先从url表里获取新的url
                 new_url = self.manager.get_new_url()
 
+                print("craw%s:"%(count) + new_url)
+
                 #对新的url进行解释并获取其中的数据
                 urls,datas = self.parser.parser(new_url)
 

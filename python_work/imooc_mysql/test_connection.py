@@ -5,7 +5,7 @@ conn = pymysql.Connect(
     host = '127.0.0.1',
     port = 3306,
     user = 'root',
-    passwd = 'YaoBa1996723',
+    passwd = '123456',
     db = 'stu_class',
     charset = 'utf8'
     )

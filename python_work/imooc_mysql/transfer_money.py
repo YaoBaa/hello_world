@@ -94,7 +94,7 @@ if __name__ == "__main__":
         host = 'localhost',
         port = 3306,
         user = 'root',
-        passwd = 'YaoBa1996723',
+        passwd = '123456',
         db = 'imooc',
         charset = 'utf8'
         )

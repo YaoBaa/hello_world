@@ -31,7 +31,6 @@ class UrlParser():
     def get_datas(self,new_url,soup):
         data = ''
         new_datas = {}
-
         new_datas['url'] = new_url
 
         #获取词条简介
@@ -43,7 +42,7 @@ class UrlParser():
             val = match.group()
             num = "\\" + val
             return num
-        brief_intros = re.sub(r'[\'\"\\]', cha, brief_intro)  # add中的参数为正则表达式在str4中匹配到的值
+        brief_intros = re.sub(r'[\'\"\\]', cha, brief_intro)  # cha中的参数为正则表达式在brief_intro中匹配到的值
         new_datas['brief_intr'] = brief_intros
 
         #获取词条名称
@@ -60,7 +59,7 @@ class UrlParser():
             val = match.group()
             num = "\\" + val
             return num
-        datas = re.sub(r'[\'\"\\]', cha, data)  # add中的参数为正则表达式在str4中匹配到的值
+        datas = re.sub(r'[\'\"\\]', cha, data)  # cha中的参数为正则表达式在data中匹配到的值
         #将转义后的字符串存入字典
         new_datas['info'] =datas
         print(new_datas)
